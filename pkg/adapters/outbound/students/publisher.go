@@ -36,5 +36,5 @@ func (i *sheetImportPublisher) SendStudentSheet(ctx context.Context, req *studen
 	if err := request.ValidateObject(req, validations...); err != nil {
 		return nil, err
 	}
-	return i.publisher.Publish(ctx, req, "student-sheet-queue", req.SchoolId, req.DeduplicationKey)
+	return i.publisher.Publish(ctx, req, "student-sheet-queue.fifo", req.SchoolId, req.DeduplicationKey)
 }
